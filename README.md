@@ -43,14 +43,14 @@ signs data set:
 
 The code for this step is contained in the third code cell of the IPython notebook.  
 
-Firstly, here is a sample image of each class in the data set:
-
+Firstly, I plotted a sample image of each class in the data set. It is a good idea to know how each traffic sign looks like, especially when we want to find sample images from the web to test our neural network:
+<img src="./writeupimages/images_each_class.png" alt="Traffic sign each class" /><br>
 Here is a histogram of amount of data in the training set for each class:
-
+<img src="./writeupimages/histogram_train.png" alt="Traffic sign each class" /><br>
 Here is a histogram of amount of data in the validation set for each class:
-
+<img src="./writeupimages/histogram_validation.png" alt="Traffic sign each class" /><br>
 Here is a histogram of amount of data in the testing set for each class:
-
+<img src="./writeupimages/histogram_test.png" alt="Traffic sign each class" /><br>
 By plotting a histogram of number of data point for each class, we can see an imbalance amount of data point between different classes and the distribution is very similar for the training set, validation set, and test set. 
 
 Max amount of data for the training set is 2000 and min amount of data is 230, this is a huge gap. Class imbalances can cause... [insert lecture]
