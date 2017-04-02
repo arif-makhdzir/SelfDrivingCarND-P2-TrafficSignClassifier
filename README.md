@@ -47,7 +47,7 @@ Firstly, I plotted a sample image of each class in the data set. It is a good id
 <img src="./writeupimages/images_each_class.png" alt="Traffic sign each class" /><br>
 For reference of the class to sign type mapping, please refer to: ...
 
-It is a good idea to know the distribution of our dataset for each class so we can detect and remedy class imabalanced issues . Here is a histogram of amount of data in the training set for each class:
+It is a good idea to know the distribution of our dataset for each class so we can detect and remedy any class imbalances issues . Here is a histogram of amount of data in the training set for each class:
 <img src="./writeupimages/histogram_train.png" alt="Traffic sign each class" /><br>
 As can be seen there is an imbalance amount of data point between different classes. Max amount of data for the training set is 2010 and min amount of data is 180 - this is a huge gap. Class imbalances can cause the classifier to overfit on the classes with the most data points. To remedy this issue, we will augment our data, especially for classes with low data count  (refer X for more details) [insert lecture] 
 
@@ -58,17 +58,11 @@ Here is a histogram of amount of data in the validation set for each class:
 Here is a histogram of amount of data in the testing set for each class:
 <img src="./writeupimages/histogram_test.png" alt="Traffic sign each class" /><br>
 
+Note that the fact that the training set, validation set, and test set have similar distribution of data per class. This means that the class imbalance issue might not have that severe of an effect for test set accuracy, as the least data class won't be tested that much.
 
-and the distribution is very similar for the training set, validation set,  test set. 
+Optional: Look at valiation set accuracy per class, see if it corresponds to the amount of data. [insert result]
 
-Note that the fact that the training set & test set has similar distribution of data per class means that the class imbalance might not have that severe of an effect for tst set accuracy, as the least data class wo't be tested that much.
-
-Look at valiation set accuracy per class, see if it corresponds to the amount of data. [insert result]
-
-With this visualization data point, I decided that I need to augment the data so that it is more balanced.
-![alt text][image1]
-
-###Design and Test a Model Architecture
+<h3>Design and Test a Model Architecture</h3>
 
 ####1. Describe how, and identify where in your code, you preprocessed the image data. What tecniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc.
 
