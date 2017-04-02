@@ -34,17 +34,32 @@ The code for this step is contained in the second code cell of the IPython noteb
 I used the numpy and csv library to calculate summary statistics of the traffic
 signs data set:
 
-* The size of training set is 34799 
-* The size of test set is 12630
-* The shape of a traffic sign image is (32, 32, 3)
-* The number of unique classes/labels in the data set is 43
+* The size of training set is <b>34799</b>
+* The size of test set is <b>12630</b>
+* The shape of a traffic sign image is <b>(32, 32, 3)</b>
+* The number of unique classes/labels in the data set is <b>43</b>
 
-####2. Include an exploratory visualization of the dataset and identify where the code is in your code file.
+<b>2. Include an exploratory visualization of the dataset and identify where the code is in your code file.</b>
 
 The code for this step is contained in the third code cell of the IPython notebook.  
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Firstly, here is a sample image of each class in the data set:
 
+Here is a histogram of amount of data in the training set for each class:
+
+Here is a histogram of amount of data in the validation set for each class:
+
+Here is a histogram of amount of data in the testing set for each class:
+
+By plotting a histogram of number of data point for each class, we can see an imbalance amount of data point between different classes and the distribution is very similar for the training set, validation set, and test set. 
+
+Max amount of data for the training set is 2000 and min amount of data is 230, this is a huge gap. Class imbalances can cause... [insert lecture]
+
+Note that the fact that the training set & test set has similar distribution of data per class means that the class imbalance might not have that severe of an effect for tst set accuracy, as the least data class wo't be tested that much.
+
+Look at valiation set accuracy per class, see if it corresponds to the amount of data. [insert result]
+
+With this visualization data point, I decided that I need to augment the data so that it is more balanced.
 ![alt text][image1]
 
 ###Design and Test a Model Architecture
