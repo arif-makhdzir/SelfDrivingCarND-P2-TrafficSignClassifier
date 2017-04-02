@@ -64,7 +64,14 @@ Optional: Look at valiation set accuracy per class, see if it corresponds to the
 
 <h3>Design and Test a Model Architecture</h3>
 
-####1. Describe how, and identify where in your code, you preprocessed the image data. What tecniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc.
+<b>1. Describe how, and identify where in your code, you preprocessed the image data. What tecniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc.</b>
+
+<b>Data Augmentation</b>
+As mentioned in the data visualization section, we are going to augment the data for the classes with less than 500 data count. We don't have the luxury to add totally new images to the data set, so we are going to copy images that are already in the dataset and apply a few image transformation techniques in order to mimic/fake new data and prevent overfitting. Below is the pipeline for the image transformation of the augmented data:
+<br><img src="./writeupimages/augment_original.png" alt="Original image" width="200" /><br>
+<b>Step 1: Change brightness/blue color balance</b>
+<br><img src="./writeupimages/augment_brightness.png" alt="Birightness image" width="200" /><br>
+We add a randomized amount of pixel brightness between .. and .. to the blue channel pixels in order to change the image's brightness.
 
 The code for this step is contained in the fourth code cell of the IPython notebook.
 
