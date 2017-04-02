@@ -51,9 +51,11 @@ Here is a histogram of amount of data in the validation set for each class:
 <img src="./writeupimages/histogram_validation.png" alt="Traffic sign each class" /><br>
 Here is a histogram of amount of data in the testing set for each class:
 <img src="./writeupimages/histogram_test.png" alt="Traffic sign each class" /><br>
-By plotting a histogram of number of data point for each class, we can see an imbalance amount of data point between different classes and the distribution is very similar for the training set, validation set, and test set. 
+By plotting a histogram of number of data point for each class, we can see an imbalance amount of data point between different classes. Max amount of data for the training set is 2010 and min amount of data is 180, this is a huge gap. Class imbalances can cause... [insert lecture] 
 
-Max amount of data for the training set is 2000 and min amount of data is 230, this is a huge gap. Class imbalances can cause... [insert lecture]
+Max amount of data for the training set is 2010 and min amount of data is 180, this is a huge gap. Class imbalances can cause... [insert lecture]
+
+and the distribution is very similar for the training set, validation set, and test set. 
 
 Note that the fact that the training set & test set has similar distribution of data per class means that the class imbalance might not have that severe of an effect for tst set accuracy, as the least data class wo't be tested that much.
 
