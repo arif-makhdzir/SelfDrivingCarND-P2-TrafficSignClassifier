@@ -72,19 +72,24 @@ As mentioned in the data visualization section, we are going to augment the data
 <b>Step 1: Change brightness/blue color balance</b>
 <br><img src="./writeupimages/augment_brightness.png" alt="Birightness image" width="200" /><br>
 We add a randomized amount of pixel brightness between .. and .. to the blue channel pixels in order to change the image's brightness.
-<b>Step 2: Apply Gaussian blur</b>
+<br><b>Step 2: Apply Gaussian blur</b>
+<br><img src="./writeupimages/augment_blur.png" alt="Blur image" width="200" /><br>
 We add gaussian blur to the image with kernel size that is randomized between .. and ..
-<b>Step 3: Apply affine transform</b>
+<br><b>Step 3: Apply affine transform</b>
+<br><img src="./writeupimages/augment_affine_transform.png" alt="Affine Transform image" width="200" /><br>
 We apply affine transform to the image with ... that is randomized between .. and ..
 
 After augmenting the data, here is how the histogram of data distribution per class looks like:
-
+<img src="./writeupimages/histogram_train_augmented.png" alt="Traffic sign each class" /><br>
 
 The code for this step is contained in the fourth code cell of the IPython notebook.
 
 Pre-processing
-If we look at the mean and variance od the training dataset, they are far from ...
+If we look at the mean and variance od the training dataset, they are:
+Mean training set: 81.923984962
+Variance training set: 4440.76525847
 
+With mean and variance far from 0 like this, stochastic gradient descent will have problem with learning rate 
 A couple of techniques, insert citation.
 
 With standardization here is the mean and variance you get:
