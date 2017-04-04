@@ -89,18 +89,17 @@ If we look at the mean and variance od the training dataset, they are:
 Mean training set: 81.923984962
 Variance training set: 4440.76525847
 
-With mean and variance far from 0 like this, stochastic gradient descent will have problem with learning rate 
-A couple of techniques, insert citation.
+With mean and variance far from 0 like this, stochastic gradient descent will have problem with learning rate. After researching http://www.dataminingblog.com/standardization-vs-normalization/ I found that there are a couple of ways to get my data more gradient descent friendly:
+1) Standardization
+2) Normalization:
 
-With standardization here is the mean and variance you get:
+Comparison:
 
-With normalization here is the means and variance you get:
+| Pre-processing Type        		|     Mean	        					|  Var | Performance |
+|:---------------------:|:---------------:|:---------------:|:---------------:|
+| Standardization |  |  |  |
+| Normalization |  |  |  |
 
-As can be seen norm closer to 0 mean. Here is accuracy to prove the point:
-
-![alt text][image2]
-
-As a last step, I normalized the image data because ...
 
 ####2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)
 
