@@ -66,6 +66,28 @@ Optional: Look at valiation set accuracy per class, see if it corresponds to the
 
 <b>1. Describe how, and identify where in your code, you preprocessed the image data. What tecniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc.</b>
 
+Pre-processing
+If we look at the mean and variance od the training dataset, they are:
+Mean training set: 81.923984962
+Variance training set: 4440.76525847
+
+With mean and variance far from 0 like this, stochastic gradient descent will have problem with learning rate. After researching http://www.dataminingblog.com/standardization-vs-normalization/ I found that there are a couple of ways to get my data more gradient descent friendly:
+1) Standardization
+2) Normalization:
+
+Comparison:
+
+| Pre-processing Type        		|     Mean	        					|  Var | Performance |
+|:---------------------:|:---------------:|:---------------:|:---------------:|
+| Standardization |  |  |  |
+| Normalization |  |  |  |
+
+This is how the images looks like after normalization:
+[Insert diagram]
+
+
+<b>2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)</b>
+
 <b>Data Augmentation</b>
 As mentioned in the data visualization section, we are going to augment the data for the classes with less than 500 data count. We don't have the luxury to add totally new images to the data set, so we are going to copy images that are already in the dataset and apply a few image transformation techniques in order to mimic/fake new data and prevent overfitting. Below is the pipeline for the image transformation of the augmented data:
 <br><img src="./writeupimages/augment_original.png" alt="Original image" width="200" /><br>
@@ -84,41 +106,7 @@ After augmenting the data, here is how the histogram of data distribution per cl
 
 The code for this step is contained in the fourth code cell of the IPython notebook.
 
-Pre-processing
-If we look at the mean and variance od the training dataset, they are:
-Mean training set: 81.923984962
-Variance training set: 4440.76525847
-
-With mean and variance far from 0 like this, stochastic gradient descent will have problem with learning rate. After researching http://www.dataminingblog.com/standardization-vs-normalization/ I found that there are a couple of ways to get my data more gradient descent friendly:
-1) Standardization
-2) Normalization:
-
-Comparison:
-
-| Pre-processing Type        		|     Mean	        					|  Var | Performance |
-|:---------------------:|:---------------:|:---------------:|:---------------:|
-| Standardization |  |  |  |
-| Normalization |  |  |  |
-
-
-####2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)
-
-The code for splitting the data into training and validation sets is contained in the fifth code cell of the IPython notebook.  
-
-To cross validate my model, I randomly split the training data into a training set and validation set. I did this by ...
-
-My final training set had X number of images. My validation set and test set had Y and Z number of images.
-
-The sixth code cell of the IPython notebook contains the code for augmenting the data set. I decided to generate additional data because ... To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
-
-
-####3. Describe, and identify where in your code, what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
+<b>3. Describe, and identify where in your code, what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.</b>
 
 The code for my final model is located in the seventh cell of the ipython notebook. 
 
@@ -137,14 +125,15 @@ My final model consisted of the following layers:
 |						|												|
  
 
-
-####4. Describe how, and identify where in your code, you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
+<b>4. Describe how, and identify where in your code, you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.</b>
 
 The code for training the model is located in the eigth cell of the ipython notebook. 
 
 To train the model, I used an ....
 
-####5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+Epoch I cut off as learning rate stop climbing and start oscilating. The reason why learning is cut off as it starts to oscilate is because any further learning will only result in overfitting, the optimal model is the one that stops right when learning rate starts to plateau.
+
+<b>5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.</b>
 
 The code for calculating the accuracy of the model is located in the ninth cell of the Ipython notebook.
 
@@ -153,18 +142,26 @@ My final model results were:
 * validation set accuracy of ? 
 * test set accuracy of ?
 
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
+
+
+My solution is based on well-known architecture with an iterative approach in fine-tuning the architecture for the problem at hand.
+* What architecture was chosen?
+My architcture is based on Lenet.
+* Why did you believe it would be relevant to the traffic sign application?
+The reason I choose this architecture is very simple, it is known to be able to achieve 95%+ accuracy on dataset that is quite similar to the traffic sign; so there was no reason for me to reinvent the whole wheel given the project's requirement of 93%+ on validation set acccuracy.
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to over fitting or under fitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
 * Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+After changing the network width to suit the traffic sign dataset, I was able to get Lenet up and running quickly. My first result was:
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
- 
+[insert result]
+
+The discrepency of accuracy between the training set and validation set tells me that the model is overfitting. So I know need to add regularization, and I had a choice of L1, L2, or dropout. I decided to try only dropout, as it is the best practice for deep neural network regularization. 
+
+Now the question is where should I add the dropout layer and also now I have a new hyperparameter to tune (keep probability). Result:
+
+[Add table of different dropout places and hyperparameters]
+
+hyperparameters tun
 
 ###Test a Model on New Images
 
