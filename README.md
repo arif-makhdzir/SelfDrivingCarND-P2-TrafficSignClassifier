@@ -222,6 +222,10 @@ The model was able to correctly guess 4 of the 5 traffic signs, which gives an a
 
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
+3 images that are from the classes in the dataset, the network is very certain of its classification 98%+. This is great and this is expected.
+
+As for the 2 images that do not belong to any class in the dataset, the network top most prediction is 50% certainty. This is great, the network is aware that it is not sure about something that it actually gets wrong.
+
 For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
