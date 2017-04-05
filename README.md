@@ -133,6 +133,8 @@ To train the model, I used an ....
 
 Epoch I cut off as learning rate stop climbing and start oscilating. The reason why learning is cut off as it starts to oscilate is because any further learning will only result in overfitting, the optimal model is the one that stops right when learning rate starts to plateau.
 
+[Table or chart for epochs]
+
 Dropout fine tuning
 There is a discrepency between the training set accuracy vis-a-vis validation set accuracy, where the validation set accuracy is about 5% less than training set accuracy. This suggests that overfitting occurs and some form of regularization is required to get the network to generalize better. 
 
@@ -141,6 +143,7 @@ There are three options for regularization: L1, L2, and Dropout. I decided to tr
 1. Where to put dropout layer?
 The first dilema is whether to put dropout layer on the convolution layer, or fully connected layer, or both. I read ... 
 I did experiment to put dropout layers at different hidden layers in the neural network and here is the accuracy result:
+
 | Dropout Layer Placement		|     Validation Set Accuracy	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Before Activation layer         		| 93.5%   							| 
@@ -150,6 +153,7 @@ I did experiment to put dropout layers at different hidden layers in the neural 
 
 2. Dropout hyperparameter
 The dropout layer has a hyperparameter called keep probability, which will decide how many percentage of the connections to the layer will be cut off/keep. Here is table of keep prob hyperparameter finetuning
+
 | Keep Probability %		|     Validation Set Accuracy	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | 0.3        		| 93.5%   							| 
@@ -195,7 +199,7 @@ Here are five German traffic signs that I found on the web:
 ![alt text][image4] ![alt text][image5] ![alt text][image6] 
 ![alt text][image7] ![alt text][image8]
 
-The first image might be difficult to classify because ...
+I chose 3 images that are from one of the 42 classes in our dataset and 2 images that are not from any classes in our dataset. I purposely chose a speed limit (60km/h) sign as one example, as it should be a bit challenging for the network to classify the correct speed limit sign. Among the 2 images that are not among classes in the dataset, one of them is a German sign and another one is a Japanese sign.
 
 ####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. Identify where in your code predictions were made. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
