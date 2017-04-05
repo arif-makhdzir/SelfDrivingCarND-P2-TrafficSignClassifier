@@ -133,6 +133,29 @@ To train the model, I used an ....
 
 Epoch I cut off as learning rate stop climbing and start oscilating. The reason why learning is cut off as it starts to oscilate is because any further learning will only result in overfitting, the optimal model is the one that stops right when learning rate starts to plateau.
 
+Dropout fine tuning
+There is a discrepency between the training set accuracy vis-a-vis validation set accuracy, where the validation set accuracy is about 5% less than training set accuracy. This suggests that overfitting occurs and some form of regularization is required to get the network to generalize better. 
+
+There are three options for regularization: L1, L2, and Dropout. I decided to try just dropout as it is the best practice for convnet regularization, I decided to spend more time finetuning architecture & hyperparameters related to dropout.
+
+1. Where to put dropout layer?
+The first dilema is whether to put dropout layer on the convolution layer, or fully connected layer, or both. I read ... 
+I did experiment to put dropout layers at different hidden layers in the neural network and here is the accuracy result:
+| Dropout Layer Placement		|     Validation Set Accuracy	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| Before Activation layer         		| 93.5%   							| 
+| After Activation layer    	| 94.5%	|
+| Fully Connected Layer					|			96.0%									|
+| After Activation & FC Layer | 92.3%  |
+
+2. Dropout hyperparameter
+The dropout layer has a hyperparameter called keep probability, which will decide how many percentage of the connections to the layer will be cut off/keep. Here is table of keep prob hyperparameter finetuning
+| Keep Probability %		|     Validation Set Accuracy	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| 0.3        		| 93.5%   							| 
+| 0.5    	| 94.5%	|
+| 0.7					|			96.0%									|
+
 <b>5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.</b>
 
 The code for calculating the accuracy of the model is located in the ninth cell of the Ipython notebook.
