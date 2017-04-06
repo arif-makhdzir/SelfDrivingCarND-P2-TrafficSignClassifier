@@ -68,8 +68,8 @@ Optional: Look at valiation set accuracy per class, see if it corresponds to the
 
 Pre-processing
 If we look at the mean and variance od the training dataset, they are:
-Mean training set: 81.923984962
-Variance training set: 4440.76525847
+Mean training set: 81.9206846051
+Variance training set: 4439.0764645
 
 With mean and variance far from 0 like this, stochastic gradient descent will have problem with learning rate. After researching http://www.dataminingblog.com/standardization-vs-normalization/ I found that there are a couple of ways to get my data more gradient descent friendly:
 1) Standardization
@@ -79,8 +79,8 @@ Comparison:
 
 | Pre-processing Type        		|     Mean	        					|  Var | Performance |
 |:---------------------:|:---------------:|:---------------:|:---------------:|
-| Standardization |  |  |  |
-| Normalization |  |  |  |
+| Standardization | -4.60951281894e-17 | 1.0 |  |
+| Normalization | -1.77143688584e-17  | 0.0682672274434 |  |
 
 This is how the images looks like after normalization:
 [Insert diagram]
@@ -115,14 +115,21 @@ My final model consisted of the following layers:
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
+| Convolution 5x5     	| 1x1 stride, valid padding, outputs 28x28x6 	|
 | RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
+| Max pooling	      	| 2x2 stride,  outputs 14x14x6 				|
+| Convolution 5x5     	| 1x1 stride, valid padding, outputs 10x10x16 	|
+| RELU					|												|
+| Max pooling	      	| 2x2 stride,  outputs 5x5x6 				|
+| Flatten	      	| Output = 400 				|
+| Fully connected		| Output = 120        									|
+| RELU					|												|
+| Dropout	| Keep probability = 0.5        									|
+| Fully connected		| Output = 84        									|
+| RELU					|												|
+| Dropout	| Keep probability = 0.5        									|
+| Fully connected		| Output = 43       									|
+| Softmax				|         									|
  
 
 <b>4. Describe how, and identify where in your code, you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.</b>
