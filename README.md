@@ -138,6 +138,18 @@ The code for training the model is located in the eigth cell of the ipython note
 
 To train the model, I used an ....
 
+| Learning Rate	| LR Decay | # Epochs | Batch Size | Keep Probability (Dropout) | Training Accuracy | Validation Accuracy | Remark |
+|:------:|:------:| :-------:|:-------:|:------:|:------:|:------:|:------:|
+| 0.001 	|  N/A  	|     10   |  25     | 1.0     | 97.1% | 91.5% | Basic starting baseline model | 
+| 0.001 	|  N/A  	|     10   |  100     | 1.0    | 97.6% | 88.2% | <b>Increase batch size</b> to 100 causing model to not generalize as well (validation accuracy dropped). This behavior is in accordance with a research paper that found out that larger batch size causes model to have bigger generalization gap: https://arxiv.org/abs/1609.04836. So I decided to keep batch size at 25| 
+| 0.001 	|  N/A  	|     30   |  25     | 1.0     | 98.6% | 92.4% | <b>Increase epoch</b> to 30 definitely improves accuracy. However I decide to fine tune number of epoch later until I fine tune other hyperparameters, as number of epochs will also collerate with learning rate | 
+| 0.001 	|  N/A  	|     20   |  25     | 0.5     | 98.7% | 96.7% | <b>Adding dropout with keep probability of 0.5</b> makes validation set accuracy to jump up to 96.7%! The model generalizes much better with dropout added. For further discussion of dropout keep probablity hyperparameter tuning and architectural decision please refer to the dropout section in tables below | 
+| 0.001 	|  0.02 	|     40   |  25     | 0.5     | 99.3% | 96.1% | <b>Adding learning rate decay of 0.02 and longer training (epoch of 40)</b> does not really help the validation accuracy. The theory is model learns better and generalizes better if it learns slower at start then slowly decay to learn faster, so I will start with lower learning rate and decay for the next test | 
+| 0.0005 	|  0.02 	|     40   |  25     | 0.5     | 99.3% | 96.2% | <b>Lowering learning rate to 0.0005 with a rate decay of 0.02</b> does not help validation accuracy that much either. It seems that we are hitting a wall here. I will try lowering the learning rate a bit more and train longer see what happens |
+| 0.001 	|  0.02 	|     55  |  25     | 0.5     | 99.4% | 95.5% | <b>Lowering learning rate to 0.0003 and training longer with 55 epoch</b> makes the model learn worst than before. So I will stick with learning rate of 0.001. Now I am going to play with decay rate |
+| 0.001 	|  0.02 	|     55  |  25     | 0.5     | 99.1% | 95.8% | <b>Lowering the decay rate to 0.002</b> does not make any difference either. Now I am going to train really long with higher epoch number and will decide cutoff point|
+| 0.001 	|  N/A 	|     70  |  25     | 0.5     | 98.9% | 96.2% | <b>See for the training and validation accuracy per epoch</b> I choose a cut off point of epoch # as after that the model stops learning; the accuracy plateau and oscilates afterwards, which will only make the model to overfit and does not contribute to any further learning|
+
 Epoch I cut off as learning rate stop climbing and start oscilating. The reason why learning is cut off as it starts to oscilate is because any further learning will only result in overfitting, the optimal model is the one that stops right when learning rate starts to plateau.
 
 [Table or chart for epochs]
@@ -172,11 +184,9 @@ The dropout layer has a hyperparameter called keep probability, which will decid
 The code for calculating the accuracy of the model is located in the ninth cell of the Ipython notebook.
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
-
-
+* training set accuracy of ? 99.6%
+* validation set accuracy of ? 96.8%
+* test set accuracy of ? 94.8%
 
 My solution is based on well-known architecture with an iterative approach in fine-tuning the architecture for the problem at hand.
 * What architecture was chosen?
@@ -185,9 +195,7 @@ My architcture is based on Lenet.
 The reason I choose this architecture is very simple, it is known to be able to achieve 95%+ accuracy on dataset that is quite similar to the traffic sign; so there was no reason for me to reinvent the whole wheel given the project's requirement of 93%+ on validation set acccuracy.
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to over fitting or under fitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
 * Which parameters were tuned? How were they adjusted and why?
-After changing the network width to suit the traffic sign dataset, I was able to get Lenet up and running quickly. My first result was:
-
-[insert result]
+After changing the network width to suit the traffic sign dataset, I was able to get Lenet up and running quickly. My first result was: Training set accuracy: 92% Validation set accuracy 87%
 
 The discrepency of accuracy between the training set and validation set tells me that the model is overfitting. So I know need to add regularization, and I had a choice of L1, L2, or dropout. I decided to try only dropout, as it is the best practice for deep neural network regularization. 
 
