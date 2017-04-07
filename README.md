@@ -148,7 +148,8 @@ To train the model, I used an ....
 | 0.0005 	|  0.02 	|     40   |  25     | 0.5     | 99.3% | 96.2% | <b>Lowering learning rate to 0.0005 with a rate decay of 0.02</b> does not help validation accuracy that much either. It seems that we are hitting a wall here. I will try lowering the learning rate a bit more and train longer see what happens |
 | 0.001 	|  0.02 	|     55  |  25     | 0.5     | 99.4% | 95.5% | <b>Lowering learning rate to 0.0003 and training longer with 55 epoch</b> makes the model learn worst than before. So I will stick with learning rate of 0.001. Now I am going to play with decay rate |
 | 0.001 	|  0.02 	|     55  |  25     | 0.5     | 99.1% | 95.8% | <b>Lowering the decay rate to 0.002</b> does not make any difference either. Now I am going to train really long with higher epoch number and will decide cutoff point|
-| 0.001 	|  N/A 	|     70  |  25     | 0.5     | 98.9% | 96.2% | <b>See for the training and validation accuracy per epoch</b> I choose a cut off point of epoch # as after that the model stops learning; the accuracy plateau and oscilates afterwards, which will only make the model to overfit and does not contribute to any further learning|
+| 0.001 	|  N/A 	|     70  |  25     | 0.5     | 98.9% | 96.2% | <b>See for the training and validation accuracy per epoch. I choose a cut off point of epoch # as after that the model stops learning</b>; the accuracy plateau and oscilates afterwards, which will only make the model to overfit and does not contribute to any further learning|
+| 0.001 	|  N/A 	|     35  |  25     | 0.5     | 98.9% | 96.2% | <b>Final hyperparameters!</b> |
 
 Epoch I cut off as learning rate stop climbing and start oscilating. The reason why learning is cut off as it starts to oscilate is because any further learning will only result in overfitting, the optimal model is the one that stops right when learning rate starts to plateau.
 
