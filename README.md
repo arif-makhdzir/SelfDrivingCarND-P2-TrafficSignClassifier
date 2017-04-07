@@ -153,10 +153,10 @@ I did experiment to put dropout layers at different hidden layers in the neural 
 
 | Dropout Layer Placement		|     Validation Set Accuracy	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Before Activation layer         		| 93.5%   							| 
-| After Activation layer    	| 94.5%	|
-| Fully Connected Layer					|			96.0%									|
-| After Activation & FC Layer | 92.3%  |
+| Before Activation layer         		| 90.2%   							| 
+| After Activation layer    	| 91.7%	|
+| Fully Connected Layer					|			94.5%									|
+| After Activation & FC Layer | 82.5%  |
 
 2. Dropout hyperparameter
 The dropout layer has a hyperparameter called keep probability, which will decide how many percentage of the connections to the layer will be cut off/keep. Here is table of keep prob hyperparameter finetuning
