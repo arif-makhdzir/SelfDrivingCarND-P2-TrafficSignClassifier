@@ -44,9 +44,34 @@ signs data set:
 The code for this step is contained in the third code cell of the IPython notebook.  
 
 Firstly, I plotted a sample image of each class in the data set. It is a good idea to know how each traffic sign looks like, especially when we want to find sample images from the web to test our neural network:
-<img src="./writeupimages/images_each_class.png" alt="Traffic sign each class" /><br>
-For reference of the class to sign type mapping, please refer to: ...
+<img src="./writeupimages/images_all.png" alt="Traffic sign each class" /><br>
+For reference of the class to sign type mapping, please refer to: <a href="./signnames.csv">signnames.csv</a>
 
+<h3>Design and Test a Model Architecture</h3>
+
+<b>1. Describe how, and identify where in your code, you preprocessed the image data. What tecniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc.</b>
+
+If we look at the mean and variance od the training dataset, they are:
+Mean training set: 81.9206846051
+Variance training set: 4439.0764645
+
+With mean and variance far from 0 like this, stochastic gradient descent might encounter problem in converging to the lowest minima for the loss function. After researching, I found that there are a couple of ways to get my data more gradient descent friendly (http://www.dataminingblog.com/standardization-vs-normalization/):
+1) Standardization
+2) Normalization
+
+I tried both methods, and here is the comparison table:
+
+| Pre-processing Type        		|     Mean	        					|  Var | Performance |
+|:---------------------:|:---------------:|:---------------:|:---------------:|
+| Standardization | -4.60951281894e-17 | 1.0 | 92.3 |
+| Normalization | -1.77143688584e-17  | 0.0682672274434 | 94.1 |
+
+Normalization gives me a better result, thus I decided to use normalization as my only pre-processing technique. This is how the images looks like after normalization:
+<img src="./writeupimages/normalized.png" alt="Traffic sign each class" /><br>
+
+<b>2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)</b>
+<br>
+<b>Data Augmentation</b>
 It is a good idea to know the distribution of our dataset for each class so we can detect and remedy any class imbalances issues . Here is a histogram of amount of data in the training set for each class:
 <img src="./writeupimages/histogram_train.png" alt="Traffic sign each class" /><br>
 As can be seen there is an imbalance amount of data point between different classes. Max amount of data for the training set is 2010 and min amount of data is 180 - this is a huge gap. Class imbalances can cause the classifier to overfit on the classes with the most data points. To remedy this issue, we will augment our data, especially for classes with low data count  (refer X for more details) [insert lecture] 
@@ -62,33 +87,6 @@ Note that the fact that the training set, validation set, and test set have simi
 
 Optional: Look at valiation set accuracy per class, see if it corresponds to the amount of data. [insert result]
 
-<h3>Design and Test a Model Architecture</h3>
-
-<b>1. Describe how, and identify where in your code, you preprocessed the image data. What tecniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc.</b>
-
-Pre-processing
-If we look at the mean and variance od the training dataset, they are:
-Mean training set: 81.9206846051
-Variance training set: 4439.0764645
-
-With mean and variance far from 0 like this, stochastic gradient descent will have problem with learning rate. After researching http://www.dataminingblog.com/standardization-vs-normalization/ I found that there are a couple of ways to get my data more gradient descent friendly:
-1) Standardization
-2) Normalization:
-
-Comparison:
-
-| Pre-processing Type        		|     Mean	        					|  Var | Performance |
-|:---------------------:|:---------------:|:---------------:|:---------------:|
-| Standardization | -4.60951281894e-17 | 1.0 |  |
-| Normalization | -1.77143688584e-17  | 0.0682672274434 |  |
-
-This is how the images looks like after normalization:
-[Insert diagram]
-
-
-<b>2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)</b>
-
-<b>Data Augmentation</b>
 As mentioned in the data visualization section, we are going to augment the data for the classes with less than 500 data count. We don't have the luxury to add totally new images to the data set, so we are going to copy images that are already in the dataset and apply a few image transformation techniques in order to mimic/fake new data and prevent overfitting. Below is the pipeline for the image transformation of the augmented data:
 <br><img src="./writeupimages/augment_original.png" alt="Original image" width="200" /><br>
 <b>Step 1: Change brightness/blue color balance</b>
@@ -155,12 +153,12 @@ Epoch I cut off as learning rate stop climbing and start oscilating. The reason 
 
 [Table or chart for epochs]
 
-Dropout fine tuning
+<b>Dropout fine tuning</b><br>
 There is a discrepency between the training set accuracy vis-a-vis validation set accuracy, where the validation set accuracy is about 5% less than training set accuracy. This suggests that overfitting occurs and some form of regularization is required to get the network to generalize better. 
 
 There are three options for regularization: L1, L2, and Dropout. I decided to try just dropout as it is the best practice for convnet regularization, I decided to spend more time finetuning architecture & hyperparameters related to dropout.
 
-1. Where to put dropout layer?
+<b>1. Where to put dropout layer?</b><br>
 The first dilema is whether to put dropout layer on the convolution layer, or fully connected layer, or both. I read ... 
 I did experiment to put dropout layers at different hidden layers in the neural network and here is the accuracy result:
 
@@ -171,7 +169,7 @@ I did experiment to put dropout layers at different hidden layers in the neural 
 | Fully Connected Layer					|			94.5%									|
 | After Activation & FC Layer | 82.5%  |
 
-2. Dropout hyperparameter
+<b>2. Dropout hyperparameter</b><br>
 The dropout layer has a hyperparameter called keep probability, which will decide how many percentage of the connections to the layer will be cut off/keep. Here is table of keep prob hyperparameter finetuning
 
 | Keep Probability %		|     Validation Set Accuracy	        					| 
@@ -185,26 +183,21 @@ The dropout layer has a hyperparameter called keep probability, which will decid
 The code for calculating the accuracy of the model is located in the ninth cell of the Ipython notebook.
 
 My final model results were:
-* training set accuracy of ? 99.6%
-* validation set accuracy of ? 96.8%
-* test set accuracy of ? 94.8%
+* training set accuracy of ? <b>99.6%</b>
+* validation set accuracy of ? <b>96.8%</b>
+* test set accuracy of ? <b>94.8%</b>
 
-My solution is based on well-known architecture with an iterative approach in fine-tuning the architecture for the problem at hand.
-* What architecture was chosen?
+My solution is based on well-known architecture with an iterative approach in fine-tuning the architecture for the problem at hand.<br>
+* What architecture was chosen?<br>
 My architcture is based on Lenet.
-* Why did you believe it would be relevant to the traffic sign application?
-The reason I choose this architecture is very simple, it is known to be able to achieve 95%+ accuracy on dataset that is quite similar to the traffic sign; so there was no reason for me to reinvent the whole wheel given the project's requirement of 93%+ on validation set acccuracy.
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to over fitting or under fitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
+* Why did you believe it would be relevant to the traffic sign application?<br>
+The reason I choose this architecture is very simple, it is known to be able to achieve 95%+ accuracy on dataset that is quite similar to the traffic sign; so there was no reason for me to reinvent the whole wheel given the project's requirement of 93%+ on validation set acccuracy.<br>
+* How was the architecture adjusted and why was it adjusted?<br>
+Please refer to answer to question 4 for the answer and discussion to this question
+* Which parameters were tuned? How were they adjusted and why?<br>
 After changing the network width to suit the traffic sign dataset, I was able to get Lenet up and running quickly. My first result was: Training set accuracy: 92% Validation set accuracy 87%
 
-The discrepency of accuracy between the training set and validation set tells me that the model is overfitting. So I know need to add regularization, and I had a choice of L1, L2, or dropout. I decided to try only dropout, as it is the best practice for deep neural network regularization. 
-
-Now the question is where should I add the dropout layer and also now I have a new hyperparameter to tune (keep probability). Result:
-
-[Add table of different dropout places and hyperparameters]
-
-hyperparameters tun
+The discrepency of accuracy between the training set and validation set tells me that the model is overfitting. So I know need to add regularization, and I had a choice of L1, L2, or dropout. I decided to try only dropout, as it is the best practice for deep neural network regularization. Please refer to the sectin on dropout above for detailed discussion on the finetuning I did for dropout.
 
 ###Test a Model on New Images
 
