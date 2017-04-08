@@ -199,18 +199,24 @@ After changing the network width to suit the traffic sign dataset, I was able to
 
 The discrepency of accuracy between the training set and validation set tells me that the model is overfitting. So I know need to add regularization, and I had a choice of L1, L2, or dropout. I decided to try only dropout, as it is the best practice for deep neural network regularization. Please refer to the sectin on dropout above for detailed discussion on the finetuning I did for dropout.
 
-###Test a Model on New Images
+<h3>Test a Model on New Images</h3>
 
-####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
+<b>1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.</b>
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+<b>3 Images from one of the classes in the dataset</b><br>
+<img src="./testimages/original/web1.jpg" height="200px"/>
+<img src="./testimages/original/web2.jpg" height="200px"/>
+<img src="./testimages/original/web3.jpg" height="200px"/><br>
+I chose 3 images that are from one of the 42 classes in our dataset. I expect the neuralnet to pass with flying colors for these images as they are from the classes in the dataset. I purposely chose a speed limit (60km/h) sign as one example, as it should be a bit challenging for the network to classify the correct speed limit sign.
 
-I chose 3 images that are from one of the 42 classes in our dataset and 2 images that are not from any classes in our dataset. I purposely chose a speed limit (60km/h) sign as one example, as it should be a bit challenging for the network to classify the correct speed limit sign. Among the 2 images that are not among classes in the dataset, one of them is a German sign and another one is a Japanese sign.
+<b>2 Images that are not from one of the classes in the dataset</b><br>
+<img src="./testimages/original/web4.jpg" height="200px"/>
+<img src="./testimages/original/web5.jpg" height="200px"/><br>
+Among the 2 images that are not among classes in the dataset, one of them is a German sign and another one is a Japanese sign.
 
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. Identify where in your code predictions were made. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+<b>2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. Identify where in your code predictions were made. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).</b>
 
 The code for making predictions on my final model is located in the tenth cell of the Ipython notebook.
 
@@ -219,10 +225,10 @@ Here are the results of the prediction:
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| Japanese ChildrenCrossing Sign     			| General caution										|
+| Keep Right					| Keep right											|
+| No Parking	      		| Bicycles crossing					 				|
+| Speed Limit (60km/h)			| Speed limit (50km/h)      							|
 
 
 The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
