@@ -223,7 +223,11 @@ Here are the results of the prediction:
 | Japanese Children Crossing Sign (No class in dataset)    			| Keep Left										|
 
 
-The model was able to correctly guess all 3 out of 3 traffic signs that have valid classes in the dataset. This gives an accuracy of 100%. As for the 2 test signs are not from classes in the dataset, which the neural network has no chance of getting it right, I am only testing them to see how certain the model is about something it should not be certain about. Now lets look at the softmax probabilities to see how certain the neural network is about its predictions.
+The model was able to correctly guess all 3 out of 3 traffic signs that have valid classes in the dataset. This gives an accuracy of 100%. As for the 2 test signs are not from classes in the dataset, which the neural network has no chance of getting it right, I am only testing them to see how certain the model is about something it should not be certain about (Top 5 softmax probabilities). 
+
+The accuracy of the test set is 94.8% and as for the accuracy of the web test images is 100%. So it looks like the model is generalizing well even for real world German traffic sign images out there. 
+
+Now lets look at the softmax probabilities to see how certain the neural network is about its predictions.
 
 <b>3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)</b>
 
