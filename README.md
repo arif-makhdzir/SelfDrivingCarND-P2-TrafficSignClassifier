@@ -220,13 +220,13 @@ Here are the results of the prediction:
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | Stop Sign      		| Stop sign   									| 
-| Japanese Children Crossing Sign     			| General caution										|
 | Keep Right					| Keep right											|
-| No Parking	      		| Bicycles crossing					 				|
-| Speed Limit (60km/h)			| Speed limit (50km/h)      							|
+| Speed Limit (60km/h)			| Speed limit (60km/h)      							|
+| No Parking	 (No class in dataset)     		| Go straight or right					 				|
+| Japanese Children Crossing Sign (No class in dataset)    			| Keep Left										|
 
 
-The model was able to correctly guess 2 of the 5 traffic signs, which gives an accuracy of 40%. However to be fair, 2 test signs are not from classes in the dataset, which the neural network has no chance of getting it right. Now lets look at the softmax probabilities to see how certain the neural network is about its predictions.
+The model was able to correctly guess all 3 out of 3 traffic signs that have valid classes in the dataset. This gives an accuracy of 100%. As for the 2 test signs are not from classes in the dataset, which the neural network has no chance of getting it right, I am testing them to see how certain the model is about something it should not be certain about. Now lets look at the softmax probabilities to see how certain the neural network is about its predictions.
 
 <b>3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)</b>
 
@@ -234,11 +234,11 @@ The code for making predictions on my final model is located in the 11th cell of
 
 Here is the result of softmax probabilities for each prediction:<br>
 <img src="./writeupimages/test_images_softmax_pred.png"/><br>
-The neural network is very certain of its classification for the 3 images that are from the classes in the dataset; with the top prediction all in the 0.85+ probability. The only issue here is that the neuralnet got the 60km/h sign prediction wrong: Its prediction is 50km/h. From the softmax probabilities we see that it is very sure that the sign is 50km/h (0.88), and it does not even assign any probability for 60km/h class. This is worrying indeed, if I have more time I will try to collect data for error per class and augment the data more for the speed limit signs.
+The neural network is very certain of its classification for the 3 images that are from the classes in the dataset; with the top prediction for all the images a perfect 1.00 probability. This is great, not only the model got the classifications correct, it is also very certain that it got them right.
 
-As for the 2 images that do not belong to any class in the dataset, the neural network is pretty certain about the no parking sign (top prediction 0.82) and not so certain (top prediction 0.32) for the Japanese children crossing sign. The neural net being uncertain about a traffic sign that does not belong to any class is great, as it has no chance of getting it right, but at least it is aware of the fact that it is seeing a traffic sign that it has no idea about. So the Japanese children crossing sign softmax probabilities of around 0.20-0.30 for top 3 predictions is a great result, as for the no parking sign with 0.82 top prediction probability is a bad result.
+As for the 2 images that do not belong to any class in the dataset, the neural network is pretty certain about the Japanese children crossing sign (top prediction 0.99) and not so certain (top prediction 0.34) for the no parking sign. The neural net being uncertain about a traffic sign that does not belong to any class is great, as it has no chance of getting it right, but at least it is aware of the fact that it is seeing a traffic sign that it has no idea about. So the no parking sign softmax probabilities of around 0.10-0.35 for top 3 predictions is a great result, as for the Japanese children crossing sign with 0.99 top prediction probability is a bad result.
 
-In conclusion, the model has good accuracy for the validation & test set. As for web images test, it perform fairly well for traffic signs that belong to classes in the dataset, however it still needs a bit of improvement to generalize better for real world application.
+In conclusion, the model has good accuracy for the validation & test set. As for web images test, it perform really well for traffic signs that belong to classes in the dataset and it is also giving reasonable softmax top 5 probabilities for traffic sign that it has no idea about (does not belong to any classes in the dataset). 
 
 
 
