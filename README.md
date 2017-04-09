@@ -73,7 +73,7 @@ Normalization gives me a better result, thus I decided to use normalization as m
 
 <b>2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)</b>
 <br>
-The code for this step is contained in the 19-12 code cell of the IPython notebook. 
+The code for this step is contained in the 19-12 code cell of the IPython notebook. <br>
 <b>Data Augmentation</b>
 It is a good idea to know the distribution of our dataset for each class so we can detect and remedy any class imbalances issues . Here is a histogram of amount of data in the training set for each class:
 <img src="./writeupimages/histogram_train.png" alt="Traffic sign each class" /><br>
@@ -178,21 +178,21 @@ The dropout layer has a hyperparameter called keep probability, which will decid
 The code for calculating the accuracy of the model is located in the ninth cell of the Ipython notebook.
 
 My final model results were:
-* training set accuracy of ? <b>99.6%</b>
-* validation set accuracy of ? <b>96.8%</b>
+* training set accuracy of ? <b>99.4%</b>
+* validation set accuracy of ? <b>97.1%</b>
 * test set accuracy of ? <b>94.8%</b>
 
 My solution is based on well-known architecture with an iterative approach in fine-tuning the architecture for the problem at hand.<br>
-* What architecture was chosen?<br>
+* <b>What architecture was chosen?</b><br>
 My architcture is based on Lenet.
-* Why did you believe it would be relevant to the traffic sign application?<br>
+* <b>Why did you believe it would be relevant to the traffic sign application?</b><br>
 The reason I choose this architecture is very simple, it is known to be able to achieve 95%+ accuracy on dataset that is quite similar to the traffic sign; so there was no reason for me to reinvent the whole wheel given the project's requirement of 93%+ on validation set acccuracy.<br>
-* How was the architecture adjusted and why was it adjusted?<br>
+* <b>How was the architecture adjusted and why was it adjusted?</b><br>
 Please refer to answer to question 4 for the answer and discussion to this question
-* Which parameters were tuned? How were they adjusted and why?<br>
+* <b>Which parameters were tuned? How were they adjusted and why?</b><br>
 After changing the network width to suit the traffic sign dataset, I was able to get Lenet up and running quickly. My first result was: Training set accuracy: 92% Validation set accuracy 87%
 
-The discrepency of accuracy between the training set and validation set tells me that the model is overfitting. So I know need to add regularization, and I had a choice of L1, L2, or dropout. I decided to try only dropout, as it is the best practice for deep neural network regularization. Please refer to the sectin on dropout above for detailed discussion on the finetuning I did for dropout.
+The discrepency of accuracy between the training set and validation set tells me that the model is overfitting. So I know need to add regularization, and I had a choice of L1, L2, or dropout. I decided to try only dropout, as it is the best practice for deep neural network regularization. Please refer to the section on dropout above for detailed discussion on the finetuning I did for dropout.
 
 <h3>Test a Model on New Images</h3>
 
@@ -237,6 +237,8 @@ Here is the result of softmax probabilities for each prediction:<br>
 The neural network is very certain of its classification for the 3 images that are from the classes in the dataset; with the top prediction all in the 0.85+ probability. The only issue here is that the neuralnet got the 60km/h sign prediction wrong: Its prediction is 50km/h. From the softmax probabilities we see that it is very sure that the sign is 50km/h (0.88), and it does not even assign any probability for 60km/h class. This is worrying indeed, if I have more time I will try to collect data for error per class and augment the data more for the speed limit signs.
 
 As for the 2 images that do not belong to any class in the dataset, the neural network is pretty certain about the no parking sign (top prediction 0.82) and not so certain (top prediction 0.32) for the Japanese children crossing sign. The neural net being uncertain about a traffic sign that does not belong to any class is great, as it has no chance of getting it right, but at least it is aware of the fact that it is seeing a traffic sign that it has no idea about. So the Japanese children crossing sign softmax probabilities of around 0.20-0.30 for top 3 predictions is a great result, as for the no parking sign with 0.82 top prediction probability is a bad result.
+
+In conclusion, the model has good accuracy for the validation & test set. As for web images test, it perform fairly well for traffic signs that belong to classes in the dataset, however it still needs a bit of improvement to generalize better for real world application.
 
 
 
