@@ -53,8 +53,8 @@ For reference of the class to sign type mapping, please refer to: <a href="./sig
 
 The code for this step is contained in the 14-15 code cell of the IPython notebook. 
 
-If we look at the mean and variance od the training dataset, they are:
-Mean training set: 81.9206846051
+If we look at the mean and variance od the training dataset, they are:<br>
+Mean training set: 81.9206846051<br>
 Variance training set: 4442.79574191
 
 With mean and variance far from 0 like this, stochastic gradient descent might encounter problem in converging to the lowest minima for the loss function. After researching, I found that there are a couple of ways to get my data more gradient descent friendly (http://www.dataminingblog.com/standardization-vs-normalization/):
@@ -65,6 +65,7 @@ I tried both methods, and here is the comparison table:
 
 | Pre-processing Type        		|     Mean	        					|  Var | Performance |
 |:---------------------:|:---------------:|:---------------:|:---------------:|
+| None | 81.9206846051 | 4442.79574191 | 89.2 |
 | Standardization | -5.79525604376e-17 | 1.0 | 92.3 |
 | Normalization | -1.77143688584e-17  | 0.0682672274434 | 94.1 |
 
@@ -219,21 +220,21 @@ Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| Keep Right					| Keep right											|
-| Speed Limit (60km/h)			| Speed limit (60km/h)      							|
+| Stop Sign      		| Stop Sign   									| 
+| Keep Right					| Keep Right											|
+| Speed Limit (60km/h)			| Speed Limit (60km/h)      							|
 | No Parking	 (No class in dataset)     		| Go straight or right					 				|
 | Japanese Children Crossing Sign (No class in dataset)    			| Keep Left										|
 
 
-The model was able to correctly guess all 3 out of 3 traffic signs that have valid classes in the dataset. This gives an accuracy of 100%. As for the 2 test signs are not from classes in the dataset, which the neural network has no chance of getting it right, I am testing them to see how certain the model is about something it should not be certain about. Now lets look at the softmax probabilities to see how certain the neural network is about its predictions.
+The model was able to correctly guess all 3 out of 3 traffic signs that have valid classes in the dataset. This gives an accuracy of 100%. As for the 2 test signs are not from classes in the dataset, which the neural network has no chance of getting it right, I am only testing them to see how certain the model is about something it should not be certain about. Now lets look at the softmax probabilities to see how certain the neural network is about its predictions.
 
 <b>3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)</b>
 
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
 Here is the result of softmax probabilities for each prediction:<br>
-<img src="./writeupimages/test_images_softmax_pred.png"/><br>
+<img src="./writeupimages/test_images_softmax_pred2.png"/><br>
 The neural network is very certain of its classification for the 3 images that are from the classes in the dataset; with the top prediction for all the images a perfect 1.00 probability. This is great, not only the model got the classifications correct, it is also very certain that it got them right.
 
 As for the 2 images that do not belong to any class in the dataset, the neural network is pretty certain about the Japanese children crossing sign (top prediction 0.99) and not so certain (top prediction 0.34) for the no parking sign. The neural net being uncertain about a traffic sign that does not belong to any class is great, as it has no chance of getting it right, but at least it is aware of the fact that it is seeing a traffic sign that it has no idea about. So the no parking sign softmax probabilities of around 0.10-0.35 for top 3 predictions is a great result, as for the Japanese children crossing sign with 0.99 top prediction probability is a bad result.
