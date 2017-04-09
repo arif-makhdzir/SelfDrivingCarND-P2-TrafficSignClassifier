@@ -147,7 +147,7 @@ To train the model, I used an Adam Optimizer, and the fine tuning of the hyperpa
 | 0.001 	|  0.02 	|     55  |  25     | 0.5     | 99.4% | 95.5% | <b>Lowering learning rate to 0.0003 and training longer with 55 epoch</b> makes the model learn worst than before. So I will stick with learning rate of 0.001. Now I am going to play with decay rate |
 | 0.001 	|  0.02 	|     55  |  25     | 0.5     | 99.1% | 95.8% | <b>Lowering the decay rate to 0.002</b> does not make any difference either. Now I am going to train really long with higher epoch number and will decide cutoff point|
 | 0.001 	|  N/A 	|     70  |  25     | 0.5     | 98.9% | 96.2% | <b>See for the training and validation accuracy per epoch. I choose a cut off point of epoch 35 as after that the model stops learning</b>; the accuracy plateau and oscilates afterwards, which will only make the model to overfit and does not contribute to any further learning. See <a href="./Epoch Data.txt">here</a> for the epoch cut off data |
-| 0.001 	|  N/A 	|     35  |  25     | 0.5     | 98.9% | 96.2% | <b>Final hyperparameters!</b> |
+| 0.001 	|  N/A 	|     35  |  25     | 0.5     | 99.4% | 97.1% | <b>Final hyperparameters!</b> |
 
 <b>Dropout fine tuning</b><br>
 There is a discrepency between the training set accuracy vis-a-vis validation set accuracy, where the validation set accuracy is about 5% less than training set accuracy. This suggests that overfitting occurs and some form of regularization is required to get the network to generalize better. 
