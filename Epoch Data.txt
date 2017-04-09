@@ -1,0 +1,284 @@
+Training...
+
+EPOCH 1 ...
+Training Accuracy = 0.785
+Validation Accuracy = 0.812
+
+EPOCH 2 ...
+Training Accuracy = 0.879
+Validation Accuracy = 0.882
+
+EPOCH 3 ...
+Training Accuracy = 0.921
+Validation Accuracy = 0.914
+
+EPOCH 4 ...
+Training Accuracy = 0.934
+Validation Accuracy = 0.926
+
+EPOCH 5 ...
+Training Accuracy = 0.945
+Validation Accuracy = 0.927
+
+EPOCH 6 ...
+Training Accuracy = 0.959
+Validation Accuracy = 0.935
+
+EPOCH 7 ...
+Training Accuracy = 0.962
+Validation Accuracy = 0.942
+
+EPOCH 8 ...
+Training Accuracy = 0.968
+Validation Accuracy = 0.943
+
+EPOCH 9 ...
+Training Accuracy = 0.971
+Validation Accuracy = 0.950
+
+EPOCH 10 ...
+Training Accuracy = 0.972
+Validation Accuracy = 0.951
+
+EPOCH 11 ...
+Training Accuracy = 0.975
+Validation Accuracy = 0.955
+
+EPOCH 12 ...
+Training Accuracy = 0.977
+Validation Accuracy = 0.957
+
+EPOCH 13 ...
+Training Accuracy = 0.982
+Validation Accuracy = 0.956
+
+EPOCH 14 ...
+Training Accuracy = 0.979
+Validation Accuracy = 0.957
+
+EPOCH 15 ...
+Training Accuracy = 0.981
+Validation Accuracy = 0.958
+
+EPOCH 16 ...
+Training Accuracy = 0.981
+Validation Accuracy = 0.950
+
+EPOCH 17 ...
+Training Accuracy = 0.984
+Validation Accuracy = 0.954
+
+EPOCH 18 ...
+Training Accuracy = 0.985
+Validation Accuracy = 0.961
+
+EPOCH 19 ...
+Training Accuracy = 0.983
+Validation Accuracy = 0.959
+
+EPOCH 20 ...
+Training Accuracy = 0.986
+Validation Accuracy = 0.954
+
+EPOCH 21 ...
+Training Accuracy = 0.985
+Validation Accuracy = 0.958
+
+EPOCH 22 ...
+Training Accuracy = 0.988
+Validation Accuracy = 0.956
+
+EPOCH 23 ...
+Training Accuracy = 0.986
+Validation Accuracy = 0.961
+
+EPOCH 24 ...
+Training Accuracy = 0.988
+Validation Accuracy = 0.963
+
+EPOCH 25 ...
+Training Accuracy = 0.986
+Validation Accuracy = 0.959
+
+EPOCH 26 ...
+Training Accuracy = 0.985
+Validation Accuracy = 0.963
+
+EPOCH 27 ...
+Training Accuracy = 0.986
+Validation Accuracy = 0.962
+
+EPOCH 28 ...
+Training Accuracy = 0.988
+Validation Accuracy = 0.957
+
+EPOCH 29 ...
+Training Accuracy = 0.990
+Validation Accuracy = 0.962
+
+EPOCH 30 ...
+Training Accuracy = 0.971
+Validation Accuracy = 0.952
+
+EPOCH 31 ...
+Training Accuracy = 0.984
+Validation Accuracy = 0.959
+
+EPOCH 32 ...
+Training Accuracy = 0.990
+Validation Accuracy = 0.962
+
+EPOCH 33 ...
+Training Accuracy = 0.991
+Validation Accuracy = 0.966
+
+EPOCH 34 ...
+Training Accuracy = 0.986
+Validation Accuracy = 0.958
+
+EPOCH 35 ...
+Training Accuracy = 0.990
+Validation Accuracy = 0.962
+
+EPOCH 36 ...
+Training Accuracy = 0.984
+Validation Accuracy = 0.962
+
+EPOCH 37 ...
+Training Accuracy = 0.988
+Validation Accuracy = 0.961
+
+EPOCH 38 ...
+Training Accuracy = 0.991
+Validation Accuracy = 0.966
+
+EPOCH 39 ...
+Training Accuracy = 0.992
+Validation Accuracy = 0.965
+
+EPOCH 40 ...
+Training Accuracy = 0.990
+Validation Accuracy = 0.966
+
+EPOCH 41 ...
+Training Accuracy = 0.991
+Validation Accuracy = 0.962
+
+EPOCH 42 ...
+Training Accuracy = 0.991
+Validation Accuracy = 0.963
+
+EPOCH 43 ...
+Training Accuracy = 0.992
+Validation Accuracy = 0.962
+
+EPOCH 44 ...
+Training Accuracy = 0.992
+Validation Accuracy = 0.964
+
+EPOCH 45 ...
+Training Accuracy = 0.991
+Validation Accuracy = 0.958
+
+EPOCH 46 ...
+Training Accuracy = 0.992
+Validation Accuracy = 0.962
+
+EPOCH 47 ...
+Training Accuracy = 0.990
+Validation Accuracy = 0.960
+
+EPOCH 48 ...
+Training Accuracy = 0.991
+Validation Accuracy = 0.966
+
+EPOCH 49 ...
+Training Accuracy = 0.992
+Validation Accuracy = 0.963
+
+EPOCH 50 ...
+Training Accuracy = 0.987
+Validation Accuracy = 0.962
+
+EPOCH 51 ...
+Training Accuracy = 0.991
+Validation Accuracy = 0.962
+
+EPOCH 52 ...
+Training Accuracy = 0.992
+Validation Accuracy = 0.967
+
+EPOCH 53 ...
+Training Accuracy = 0.990
+Validation Accuracy = 0.964
+
+EPOCH 54 ...
+Training Accuracy = 0.993
+Validation Accuracy = 0.970
+
+EPOCH 55 ...
+Training Accuracy = 0.989
+Validation Accuracy = 0.952
+
+EPOCH 56 ...
+Training Accuracy = 0.991
+Validation Accuracy = 0.960
+
+EPOCH 57 ...
+Training Accuracy = 0.994
+Validation Accuracy = 0.967
+
+EPOCH 58 ...
+Training Accuracy = 0.993
+Validation Accuracy = 0.961
+
+EPOCH 59 ...
+Training Accuracy = 0.992
+Validation Accuracy = 0.966
+
+EPOCH 60 ...
+Training Accuracy = 0.993
+Validation Accuracy = 0.961
+
+EPOCH 61 ...
+Training Accuracy = 0.989
+Validation Accuracy = 0.965
+
+EPOCH 62 ...
+Training Accuracy = 0.989
+Validation Accuracy = 0.955
+
+EPOCH 63 ...
+Training Accuracy = 0.993
+Validation Accuracy = 0.965
+
+EPOCH 64 ...
+Training Accuracy = 0.994
+Validation Accuracy = 0.966
+
+EPOCH 65 ...
+Training Accuracy = 0.992
+Validation Accuracy = 0.963
+
+EPOCH 66 ...
+Training Accuracy = 0.993
+Validation Accuracy = 0.966
+
+EPOCH 67 ...
+Training Accuracy = 0.993
+Validation Accuracy = 0.967
+
+EPOCH 68 ...
+Training Accuracy = 0.994
+Validation Accuracy = 0.959
+
+EPOCH 69 ...
+Training Accuracy = 0.992
+Validation Accuracy = 0.965
+
+EPOCH 70 ...
+Training Accuracy = 0.989
+Validation Accuracy = 0.962
+
+Model saved
+
