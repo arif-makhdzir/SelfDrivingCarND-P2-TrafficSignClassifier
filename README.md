@@ -74,7 +74,7 @@ Normalization gives me a better result, thus I decided to use normalization as m
 
 <b>2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)</b>
 <br>
-The code for this step is contained in the 19-12 code cell of the IPython notebook. <br>
+The code for this step is contained in the 19-12 code cell of the IPython notebook. <br><br>
 <b>Data Augmentation</b><br>
 It is a good idea to know the distribution of our dataset for each class so we can detect and remedy any class imbalances issues . Here is a histogram of amount of data in the training set for each class:
 <img src="./writeupimages/histogram_train.png" alt="Traffic sign each class" /><br>
