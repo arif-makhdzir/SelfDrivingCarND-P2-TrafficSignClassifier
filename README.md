@@ -29,7 +29,7 @@ The goals / steps of this project are the following:
 
 <b>1. Provide a basic summary of the data set and identify where in your code the summary was done. </b>
 
-The code for this step is contained in the second code cell of the IPython notebook.  
+The code for this step is contained in the third code cell of the IPython notebook.  
 
 I used the numpy and csv library to calculate summary statistics of the traffic
 signs data set:
@@ -41,7 +41,7 @@ signs data set:
 
 <b>2. Include an exploratory visualization of the dataset and identify where the code is in your code file.</b>
 
-The code for this step is contained in the third code cell of the IPython notebook.  
+The code for this step is contained in the 4-5 code cell of the IPython notebook.  
 
 Firstly, I plotted a sample image of each class in the data set. It is a good idea to know how each traffic sign looks like, especially when we want to find sample images from the web to test our neural network:
 <img src="./writeupimages/images_all.png" alt="Traffic sign each class" /><br>
@@ -51,9 +51,11 @@ For reference of the class to sign type mapping, please refer to: <a href="./sig
 
 <b>1. Describe how, and identify where in your code, you preprocessed the image data. What tecniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc.</b>
 
+The code for this step is contained in the 14-15 code cell of the IPython notebook. 
+
 If we look at the mean and variance od the training dataset, they are:
 Mean training set: 81.9206846051
-Variance training set: 4439.0764645
+Variance training set: 4442.79574191
 
 With mean and variance far from 0 like this, stochastic gradient descent might encounter problem in converging to the lowest minima for the loss function. After researching, I found that there are a couple of ways to get my data more gradient descent friendly (http://www.dataminingblog.com/standardization-vs-normalization/):
 1) Standardization
@@ -63,7 +65,7 @@ I tried both methods, and here is the comparison table:
 
 | Pre-processing Type        		|     Mean	        					|  Var | Performance |
 |:---------------------:|:---------------:|:---------------:|:---------------:|
-| Standardization | -4.60951281894e-17 | 1.0 | 92.3 |
+| Standardization | -5.79525604376e-17 | 1.0 | 92.3 |
 | Normalization | -1.77143688584e-17  | 0.0682672274434 | 94.1 |
 
 Normalization gives me a better result, thus I decided to use normalization as my only pre-processing technique. This is how the images looks like after normalization:<br>
@@ -71,10 +73,26 @@ Normalization gives me a better result, thus I decided to use normalization as m
 
 <b>2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)</b>
 <br>
+The code for this step is contained in the 19-12 code cell of the IPython notebook. 
 <b>Data Augmentation</b>
 It is a good idea to know the distribution of our dataset for each class so we can detect and remedy any class imbalances issues . Here is a histogram of amount of data in the training set for each class:
 <img src="./writeupimages/histogram_train.png" alt="Traffic sign each class" /><br>
-As can be seen there is an imbalance amount of data point between different classes. Max amount of data for the training set is 2010 and min amount of data is 180 - this is a huge gap. Class imbalances can cause the classifier to overfit on the classes with the most data points. To remedy this issue, we will augment our data, especially for classes with low data count  (refer X for more details) [insert lecture] 
+As can be seen there is an imbalance amount of data point between different classes. Max amount of data for the training set is 2010 and min amount of data is 180 - this is a huge gap. Class imbalances can cause the classifier to overfit on the classes with the most data points. To remedy this issue, we will augment our data, especially for classes with low data count.
+
+We are going to augment the data for the classes with less than 500 data count. We don't have the luxury to add totally new images to the data set, so we are going to copy images that are already in the dataset and apply a few image transformation techniques in order to create 'synthetic' new data and prevent overfitting. Below is the pipeline for the image transformation of the augmented data:
+<br><img src="./writeupimages/augment_original.png" alt="Original image" width="200" /><br>
+<b>Step 1: Change brightness/blue color balance</b>
+<br><img src="./writeupimages/augment_brightness.png" alt="Birightness image" width="200" /><br>
+We add a randomized amount of pixel brightness between 10 and 30 to the blue channel pixels in order to change the image's brightness.
+<br><b>Step 2: Apply Gaussian blur</b>
+<br><img src="./writeupimages/augment_blur.png" alt="Blur image" width="200" /><br>
+We add gaussian blur to the image with kernel size that is randomized between 1 and 3
+<br><b>Step 3: Apply affine transform</b>
+<br><img src="./writeupimages/augment_affine_transform.png" alt="Affine Transform image" width="200" /><br>
+We apply affine transform to the image with a transformation matrix that is randomized between -3 and 3
+
+After augmenting the data, here is how the histogram of data distribution per class looks like:
+<img src="./writeupimages/histogram_train_augmented.png" alt="Traffic sign each class" /><br>
 
 Now lets look at the histogram distribution of the data for the validation and test set:
 
@@ -85,28 +103,9 @@ Here is a histogram of amount of data in the testing set for each class:
 
 Note that the fact that the training set, validation set, and test set have similar distribution of data per class. This means that the class imbalance issue might not have that severe of an effect for test set accuracy, as the least data class won't be tested that much.
 
-Optional: Look at valiation set accuracy per class, see if it corresponds to the amount of data. [insert result]
-
-As mentioned in the data visualization section, we are going to augment the data for the classes with less than 500 data count. We don't have the luxury to add totally new images to the data set, so we are going to copy images that are already in the dataset and apply a few image transformation techniques in order to mimic/fake new data and prevent overfitting. Below is the pipeline for the image transformation of the augmented data:
-<br><img src="./writeupimages/augment_original.png" alt="Original image" width="200" /><br>
-<b>Step 1: Change brightness/blue color balance</b>
-<br><img src="./writeupimages/augment_brightness.png" alt="Birightness image" width="200" /><br>
-We add a randomized amount of pixel brightness between .. and .. to the blue channel pixels in order to change the image's brightness.
-<br><b>Step 2: Apply Gaussian blur</b>
-<br><img src="./writeupimages/augment_blur.png" alt="Blur image" width="200" /><br>
-We add gaussian blur to the image with kernel size that is randomized between .. and ..
-<br><b>Step 3: Apply affine transform</b>
-<br><img src="./writeupimages/augment_affine_transform.png" alt="Affine Transform image" width="200" /><br>
-We apply affine transform to the image with ... that is randomized between .. and ..
-
-After augmenting the data, here is how the histogram of data distribution per class looks like:
-<img src="./writeupimages/histogram_train_augmented.png" alt="Traffic sign each class" /><br>
-
-The code for this step is contained in the fourth code cell of the IPython notebook.
-
 <b>3. Describe, and identify where in your code, what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.</b>
 
-The code for my final model is located in the seventh cell of the ipython notebook. 
+The code for my final model is located in the 17th cell of the ipython notebook. 
 
 My final model consisted of the following layers:
 
@@ -132,9 +131,9 @@ My final model consisted of the following layers:
 
 <b>4. Describe how, and identify where in your code, you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.</b>
 
-The code for training the model is located in the eigth cell of the ipython notebook. 
+The code for training the model is located in the 18-19 cell of the ipython notebook. 
 
-To train the model, I used an ....
+To train the model, I used an Adam Optimizer, and the fine tuning of the hyperparameters is described in details in the table below:
 
 | Learning Rate	| LR Decay | # Epochs | Batch Size | Keep Probability (Dropout) | Training Accuracy | Validation Accuracy | Remark |
 |:------:|:------:| :-------:|:-------:|:------:|:------:|:------:|:------:|
@@ -146,12 +145,8 @@ To train the model, I used an ....
 | 0.0005 	|  0.02 	|     40   |  25     | 0.5     | 99.3% | 96.2% | <b>Lowering learning rate to 0.0005 with a rate decay of 0.02</b> does not help validation accuracy that much either. It seems that we are hitting a wall here. I will try lowering the learning rate a bit more and train longer see what happens |
 | 0.001 	|  0.02 	|     55  |  25     | 0.5     | 99.4% | 95.5% | <b>Lowering learning rate to 0.0003 and training longer with 55 epoch</b> makes the model learn worst than before. So I will stick with learning rate of 0.001. Now I am going to play with decay rate |
 | 0.001 	|  0.02 	|     55  |  25     | 0.5     | 99.1% | 95.8% | <b>Lowering the decay rate to 0.002</b> does not make any difference either. Now I am going to train really long with higher epoch number and will decide cutoff point|
-| 0.001 	|  N/A 	|     70  |  25     | 0.5     | 98.9% | 96.2% | <b>See for the training and validation accuracy per epoch. I choose a cut off point of epoch # as after that the model stops learning</b>; the accuracy plateau and oscilates afterwards, which will only make the model to overfit and does not contribute to any further learning|
+| 0.001 	|  N/A 	|     70  |  25     | 0.5     | 98.9% | 96.2% | <b>See for the training and validation accuracy per epoch. I choose a cut off point of epoch 35 as after that the model stops learning</b>; the accuracy plateau and oscilates afterwards, which will only make the model to overfit and does not contribute to any further learning. See <a href="./Epoch Data.txt">here</a> for the epoch cut off data |
 | 0.001 	|  N/A 	|     35  |  25     | 0.5     | 98.9% | 96.2% | <b>Final hyperparameters!</b> |
-
-Epoch I cut off as learning rate stop climbing and start oscilating. The reason why learning is cut off as it starts to oscilate is because any further learning will only result in overfitting, the optimal model is the one that stops right when learning rate starts to plateau.
-
-[Table or chart for epochs]
 
 <b>Dropout fine tuning</b><br>
 There is a discrepency between the training set accuracy vis-a-vis validation set accuracy, where the validation set accuracy is about 5% less than training set accuracy. This suggests that overfitting occurs and some form of regularization is required to get the network to generalize better. 
@@ -238,7 +233,7 @@ The model was able to correctly guess 2 of the 5 traffic signs, which gives an a
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
 Here is the result of softmax probabilities for each prediction:<br>
-<img src="./writeupimages/original/test_images_softmax_pred.png"/>
+<img src="./writeupimages/test_images_softmax_pred.png"/><br>
 The neural network is very certain of its classification for the 3 images that are from the classes in the dataset; with the top prediction all in the 0.85+ probability. The only issue here is that the neuralnet got the 60km/h sign prediction wrong: Its prediction is 50km/h. From the softmax probabilities we see that it is very sure that the sign is 50km/h (0.88), and it does not even assign any probability for 60km/h class. This is worrying indeed, if I have more time I will try to collect data for error per class and augment the data more for the speed limit signs.
 
 As for the 2 images that do not belong to any class in the dataset, the neural network is pretty certain about the no parking sign (top prediction 0.82) and not so certain (top prediction 0.32) for the Japanese children crossing sign. The neural net being uncertain about a traffic sign that does not belong to any class is great, as it has no chance of getting it right, but at least it is aware of the fact that it is seeing a traffic sign that it has no idea about. So the Japanese children crossing sign softmax probabilities of around 0.20-0.30 for top 3 predictions is a great result, as for the no parking sign with 0.82 top prediction probability is a bad result.
