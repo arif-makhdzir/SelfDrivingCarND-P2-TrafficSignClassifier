@@ -191,8 +191,6 @@ The reason I choose this architecture is very simple, it is known to be able to 
 * <b>How was the architecture adjusted and why was it adjusted? Which parameters were tuned? How were they adjusted and why?</b><br>
 Please refer to answer to question 4 (section above) for the answer and discussion to this question
 
-The discrepency of accuracy between the training set and validation set tells me that the model is overfitting. So I know need to add regularization, and I had a choice of L1, L2, or dropout. I decided to try only dropout, as it is the best practice for deep neural network regularization. Please refer to the section on dropout above for detailed discussion on the finetuning I did for dropout.
-
 <h3>Test a Model on New Images</h3>
 
 <b>1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.</b>
