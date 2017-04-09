@@ -238,7 +238,7 @@ The model was able to correctly guess 2 of the 5 traffic signs, which gives an a
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
 Here is the result of softmax probabilities for each prediction:<br>
-<img src="./writeupimages/original/ 	test_images_softmax_pred.png"/>
+<img src="./writeupimages/original/test_images_softmax_pred.png"/>
 The neural network is very certain of its classification for the 3 images that are from the classes in the dataset; with the top prediction all in the 0.85+ probability. The only issue here is that the neuralnet got the 60km/h sign prediction wrong: Its prediction is 50km/h. From the softmax probabilities we see that it is very sure that the sign is 50km/h (0.88), and it does not even assign any probability for 60km/h class. This is worrying indeed, if I have more time I will try to collect data for error per class and augment the data more for the speed limit signs.
 
 As for the 2 images that do not belong to any class in the dataset, the neural network is pretty certain about the no parking sign (top prediction 0.82) and not so certain (top prediction 0.32) for the Japanese children crossing sign. The neural net being uncertain about a traffic sign that does not belong to any class is great, as it has no chance of getting it right, but at least it is aware of the fact that it is seeing a traffic sign that it has no idea about. So the Japanese children crossing sign softmax probabilities of around 0.20-0.30 for top 3 predictions is a great result, as for the no parking sign with 0.82 top prediction probability is a bad result.
