@@ -188,10 +188,8 @@ My solution is based on well-known architecture with an iterative approach in fi
 My architcture is based on Lenet.
 * <b>Why did you believe it would be relevant to the traffic sign application?</b><br>
 The reason I choose this architecture is very simple, it is known to be able to achieve 95%+ accuracy on dataset that is quite similar to the traffic sign; so there was no reason for me to reinvent the whole wheel given the project's requirement of 93%+ on validation set acccuracy.<br>
-* <b>How was the architecture adjusted and why was it adjusted?</b><br>
-Please refer to answer to question 4 for the answer and discussion to this question
-* <b>Which parameters were tuned? How were they adjusted and why?</b><br>
-After changing the network width to suit the traffic sign dataset, I was able to get Lenet up and running quickly. My first result was: Training set accuracy: 92% Validation set accuracy 87%
+* <b>How was the architecture adjusted and why was it adjusted? Which parameters were tuned? How were they adjusted and why?</b><br>
+Please refer to answer to question 4 (section above) for the answer and discussion to this question
 
 The discrepency of accuracy between the training set and validation set tells me that the model is overfitting. So I know need to add regularization, and I had a choice of L1, L2, or dropout. I decided to try only dropout, as it is the best practice for deep neural network regularization. Please refer to the section on dropout above for detailed discussion on the finetuning I did for dropout.
 
